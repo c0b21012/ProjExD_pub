@@ -26,7 +26,7 @@ class Hole(pg.sprite.Sprite):
         self.rect = self.image.get_rect()      # 穴用Rect
         self.rect.centerx, self.rect.centery = xy   #穴用rectの座標
 
-    def update(self, hole, scr):
+    def update(self, hole):
         pg.draw.circle(scr.scr, (101,80,88),(self.rect.centerx, self.rect.centery), self.r) # モグラの穴Surfaceに円を描く
         hole.draw(scr.scr)  #描画
 
@@ -124,7 +124,7 @@ def game_h(scr, font):
 
     while True:
         scr.scr.blit(scr.img, scr.rect)
-        holes.update(holes, scr)    #updateメソッドを呼び出す
+        holes.update(scr, holes)    #updateメソッドを呼び出す
         k_bind.update(scr)
         count = time.time()         #現在時刻の計測
         if (count - start_time) >= 1:   #一秒経過したときに呼び出し
