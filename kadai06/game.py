@@ -9,6 +9,12 @@ KF_list = [ pg.K_q, pg.K_w, pg.K_e, pg.K_i, pg.K_o, pg.K_p] #キーのリスト
 score = 0       #モグラをたたいた回数のカウント
 score_kf = 0    #スコアを一秒間に一回のみカウントするためのフラグ
 n = 30      #モグラをたたく回数
+#クリア時間の表示,C0B21126
+#st_time = float
+#fin_time = float
+#cl_time = float
+
+
 
 class Screen:              #ウィンドウの作成
     def __init__(self, xy, title):
@@ -54,6 +60,7 @@ def i_scr(scr, font):   #スタート画面の作成
                 return pg.quit()        #ウィンドウを閉じる
             if event.type == pg.KEYDOWN: #キーを押したとき
                 if event.key == pg.K_r: #rキーを押したとき
+                    #st_time = time.perf_counter()  #C0B21126
                     return
 
 def f_scr(scr, font):   #スタート画面の作成
@@ -68,6 +75,11 @@ def f_scr(scr, font):   #スタート画面の作成
         pg.font.init()
         text2 = font.render("made by C0B21012", False, (255, 255, 255))
         scr.scr.blit(text2, (250, 350))
+        #C0B21126
+        #cl_time = fin_time - st_time
+        #text3 = font.render(f"Clear Time:{cl_time}", False, (255, 255, 255))
+        #scr.scr.blit(text3,(200, 300))
+
         pg.display.update()   
         for event in pg.event.get():    #eventの種類を受け取る
             if event.type == pg.QUIT:   #Xボタンを押したとき
@@ -139,7 +151,9 @@ def game_h(scr, font):
                 return pg.quit()
         key_flag(figure)    #モグラをたたいた回数の処理
         if score == n:     #モグラをn回たたいたら終了
+            #fin_time = time.perf_counter()     #C0B21126
             return
+
        
 
 
