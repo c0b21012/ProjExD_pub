@@ -1,4 +1,3 @@
-from turtle import pos
 import pygame as pg
 import random
 import sys
@@ -80,7 +79,6 @@ def f_scr(scr, font):   #スタート画面の作成
 
 def mole(scr, figure):
     x,y = hxy_list[figure]  #画像のxy座標
-    pos = pg.mouse.get_pos()
     if score_kf == 0:
         mole_img = pg.image.load("kadai06/mogura.png")  #モグラの画像
         mole_img = pg.transform.rotozoom(mole_img, 0 , 0.2) #モグラの画像の大きさの調整
@@ -88,9 +86,9 @@ def mole(scr, figure):
     if score_kf == 1:
         mole_img = pg.image.load("kadai06/mogura2.png") #たたかれたモグラの画像
         mole_img = pg.transform.rotozoom(mole_img, 0 , 0.075) #たたかれたモグラの画像の大きさ調整
-        font2 = pg.font.SysFont(None, 70)
-        point = font2.render("+1", True, (0, 0, 0))
-        scr.scr.blit(mole_img, (x-75, y-25))
+        font2 = pg.font.SysFont(None, 70)                     #C0B21024
+        point = font2.render("+1", True, (0, 0, 0))           #+1の表示
+        scr.scr.blit(mole_img, (x-75, y-25))                   
         scr.scr.blit(point, (x-50, y))
 
 
