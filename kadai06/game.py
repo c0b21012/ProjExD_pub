@@ -31,7 +31,7 @@ class Hole(pg.sprite.Sprite):
         hole.draw(scr.scr)  #描画
 
 
-class key_place(pg.sprite.Sprite):    #穴に対応するキーを表示する
+class KeyPlace(pg.sprite.Sprite):    #穴に対応するキーを表示する
     
     def __init__(self, font, i):
         super().__init__()
@@ -120,7 +120,7 @@ def game_h(scr, font):
     
     k_bind = pg.sprite.Group()      #穴に対応するキーの文字のスプライトグループ
     for i in range(len(K_list)):    
-        k_bind.add(key_place(font, i)) 
+        k_bind.add(KeyPlace(font, i))
 
     while True:
         scr.scr.blit(scr.img, scr.rect)
