@@ -86,7 +86,11 @@ def mole(scr, figure):
     if score_kf is False:
         mole_img = pg.image.load("kadai06/mogura2.png") #たたかれたモグラの画像
         mole_img = pg.transform.rotozoom(mole_img, 0 , 0.075) #たたかれたモグラの画像の大きさ調整
-        scr.scr.blit(mole_img, (x-75, y-25))
+        font2 = pg.font.SysFont(None, 70)                     #C0B21024
+        point = font2.render("+1", True, (0, 0, 0))           #+1の表示
+        scr.scr.blit(mole_img, (x-75, y-25))                   
+        scr.scr.blit(point, (x-50, y))
+
 
 
 
