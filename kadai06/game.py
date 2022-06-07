@@ -7,7 +7,7 @@ hxy_list = [(150, 175),(400, 175),(650, 175),(150, 450),(400, 450),(650, 450)]  
 K_list = [ "Q", "W", "E", "I", "O", "P"]    #穴に対応するキーの文字を表示するためのリスト
 KF_list = [ pg.K_q, pg.K_w, pg.K_e, pg.K_i, pg.K_o, pg.K_p] #キーのリスト
 score = 0       #モグラをたたいた回数のカウント
-score_kf = 0    #スコアを一秒間に一回のみカウントするためのフラグ
+score_kf = True    #スコアを一秒間に一回のみカウントするためのフラグ
 n = 30      #モグラをたたく回数
 
 class Screen:              #ウィンドウの作成
@@ -79,11 +79,11 @@ def f_scr(scr, font):   #スタート画面の作成
 
 def mole(scr, figure):
     x,y = hxy_list[figure]  #画像のxy座標
-    if score_kf == 0:
+    if score_kf:
         mole_img = pg.image.load("kadai06/mogura.png")  #モグラの画像
         mole_img = pg.transform.rotozoom(mole_img, 0 , 0.2) #モグラの画像の大きさの調整
         scr.scr.blit(mole_img, (x-50, y))
-    if score_kf == 1:
+    if score_kf is False:
         mole_img = pg.image.load("kadai06/mogura2.png") #たたかれたモグラの画像
         mole_img = pg.transform.rotozoom(mole_img, 0 , 0.075) #たたかれたモグラの画像の大きさ調整
         scr.scr.blit(mole_img, (x-75, y-25))
@@ -94,8 +94,8 @@ def key_flag(figure):
     global score, score_kf
     pressed = pg.key.get_pressed()
     if pressed[KF_list[figure]]:    #リストに対応するキーが押されたときに
-        if score_kf == 0:
-            score_kf = 1            #スコアカウントのフラグ
+        if score_kf:
+            score_kf = False            #スコアカウントのフラグ
             score += 1              #モグラを叩いた回数のカウント
 
 
@@ -128,7 +128,7 @@ def game_h(scr, font):
         k_bind.update(scr)
         count = time.time()         #現在時刻の計測
         if (count - start_time) >= 1:   #一秒経過したときに呼び出し
-            score_kf = 0                #1秒間の一度だけscoreを数えるためのフラグ
+            score_kf = True                #1秒間の一度だけscoreを数えるためのフラグ
             start_time = count          #start_timeにcountを代入する
             figure = random.randint(0, 5)
         mole(scr, figure)       #モグラの画像の呼び出し 
