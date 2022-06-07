@@ -56,7 +56,7 @@ def i_scr(scr, font):   #スタート画面の作成
                 if event.key == pg.K_r: #rキーを押したとき
                     return
 
-def f_scr(scr, font):   #スタート画面の作成
+def f_scr(scr, font):   #終了画面の作成
     while True: 
         scr.scr.fill((169, 206, 236))   #背景を水色で埋める
         ft_i = (300,150)     #文字の描画位置
@@ -68,6 +68,11 @@ def f_scr(scr, font):   #スタート画面の作成
         pg.font.init()
         text2 = font.render("made by C0B21012", False, (255, 255, 255))
         scr.scr.blit(text2, (250, 350))
+        
+        pg.font.init()
+        text3 = font.render(f"{time.time()}", False, (255, 255, 255))   # C0B21096
+        scr.scr.blit(text3, (200, 300))                                 # クリア時間の表示
+
         pg.display.update()   
         for event in pg.event.get():    #eventの種類を受け取る
             if event.type == pg.QUIT:   #Xボタンを押したとき
