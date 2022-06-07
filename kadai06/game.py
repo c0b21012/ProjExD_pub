@@ -4,17 +4,19 @@ import sys
 import time
 
 hxy_list = [(150, 175),(400, 175),(650, 175),(150, 450),(400, 450),(650, 450)]  #ゲーム内で使うxy座標のリスト
-K_list = [ "Q", "W", "E", "I", "O", "P"]    #穴に対応するキーの文字を表示するためのリスト
-KF_list = [ pg.K_q, pg.K_w, pg.K_e, pg.K_i, pg.K_o, pg.K_p] #キーのリスト
+K_list = ["Q", "W", "E", "I", "O", "P"]    #穴に対応するキーの文字を表示するためのリスト
+KF_list = [pg.K_q, pg.K_w, pg.K_e, pg.K_i, pg.K_o, pg.K_p] #キーのリスト
 score = 0       #モグラをたたいた回数のカウント
 score_kf = True    #スコアを一秒間に一回のみカウントするためのフラグ
 n = 10      #モグラをたたく回数
+LIGHT_BLUE = (169, 206, 236)
+
 
 class Screen:              #ウィンドウの作成
     def __init__(self, xy, title):
         pg.display.set_caption(title)   #ウィンドウの名前の設定
         self.scr = pg.display.set_mode(xy)       #画面用のsurface
-        self.scr.fill((169, 206, 236)) #画面を水色で作成
+        self.scr.fill(LIGHT_BLUE) #画面を水色で作成
 
 
 class Hole(pg.sprite.Sprite):
@@ -56,9 +58,10 @@ def i_scr(scr, font):   #スタート画面の作成
                 if event.key == pg.K_r: #rキーを押したとき
                     return
 
+
 def f_scr(scr, font):   #スタート画面の作成
     while True: 
-        scr.scr.fill((169, 206, 236))   #背景を水色で埋める
+        scr.scr.fill(LIGHT_BLUE)   #背景を水色で埋める
         ft_i = (300,150)     #文字の描画位置
         text = font.render("Game Clear", False, (255,255,255))  #textのサーフェイス
         scr.scr.blit(text, ft_i)
@@ -90,8 +93,6 @@ def mole(scr, figure):
         point = font2.render("+1", True, (255, 255, 255))           #+1の表示
         scr.scr.blit(mole_img, (x-75, y-25))                   
         scr.scr.blit(point, (x-40, y))
-
-
 
 
 def key_flag(figure):
@@ -145,7 +146,6 @@ def game_h(scr, font):
         if score == n:     #モグラをn回たたいたら終了
             return
        
-
 
 
 def main():
