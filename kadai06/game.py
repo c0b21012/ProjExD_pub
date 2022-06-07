@@ -8,7 +8,7 @@ K_list = [ "Q", "W", "E", "I", "O", "P"]    #穴に対応するキーの文字�
 KF_list = [ pg.K_q, pg.K_w, pg.K_e, pg.K_i, pg.K_o, pg.K_p] #キーのリスト
 score = 0       #モグラをたたいた回数のカウント
 score_kf = True    #スコアを一秒間に一回のみカウントするためのフラグ
-n = 5      #モグラをたたく回数
+n = 10      #モグラをたたく回数
 
 class Screen:              #ウィンドウの作成
     def __init__(self, xy, title):
@@ -67,7 +67,7 @@ def f_scr(scr, font):   #スタート画面の作成
         scr.scr.blit(text1, (200, 200))
         pg.font.init()
         text2 = font.render("made by G14", False, (255, 255, 255))
-        scr.scr.blit(text2, (250, 350))
+        scr.scr.blit(text2, (300, 350))
         pg.display.update()   
         for event in pg.event.get():    #eventの種類を受け取る
             if event.type == pg.QUIT:   #Xボタンを押したとき
@@ -87,9 +87,9 @@ def mole(scr, figure):
         mole_img = pg.image.load("kadai06/mogura2.png") #たたかれたモグラの画像
         mole_img = pg.transform.rotozoom(mole_img, 0 , 0.075) #たたかれたモグラの画像の大きさ調整
         font2 = pg.font.SysFont(None, 70)                     #C0B21024
-        point = font2.render("+1", True, (0, 0, 0))           #+1の表示
+        point = font2.render("+1", True, (255, 255, 255))           #+1の表示
         scr.scr.blit(mole_img, (x-75, y-25))                   
-        scr.scr.blit(point, (x-50, y))
+        scr.scr.blit(point, (x-40, y))
 
 
 
