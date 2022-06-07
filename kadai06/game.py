@@ -8,7 +8,7 @@ K_list = [ "Q", "W", "E", "I", "O", "P"]    #穴に対応するキーの文字�
 KF_list = [ pg.K_q, pg.K_w, pg.K_e, pg.K_i, pg.K_o, pg.K_p] #キーのリスト
 score = 0       #モグラをたたいた回数のカウント
 score_kf = True    #スコアを一秒間に一回のみカウントするためのフラグ
-n = 30      #モグラをたたく回数
+n = 5      #モグラをたたく回数
 
 class Screen:              #ウィンドウの作成
     def __init__(self, xy, title):
@@ -26,7 +26,7 @@ class Hole(pg.sprite.Sprite):
         self.rect = self.image.get_rect()      # 穴用Rect
         self.rect.centerx, self.rect.centery = xy   #穴用rectの座標
 
-    def update(self, hole):
+    def update(self, scr, hole):
         pg.draw.circle(scr.scr, (101,80,88),(self.rect.centerx, self.rect.centery), self.r) # モグラの穴Surfaceに円を描く
         hole.draw(scr.scr)  #描画
 
@@ -66,7 +66,7 @@ def f_scr(scr, font):   #スタート画面の作成
         text1 = font.render("Press ESC to exit the game", False, (255, 255, 255))
         scr.scr.blit(text1, (200, 200))
         pg.font.init()
-        text2 = font.render("made by C0B21012", False, (255, 255, 255))
+        text2 = font.render("made by G14", False, (255, 255, 255))
         scr.scr.blit(text2, (250, 350))
         pg.display.update()   
         for event in pg.event.get():    #eventの種類を受け取る
