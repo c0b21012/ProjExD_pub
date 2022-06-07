@@ -17,7 +17,7 @@ class Screen:              #ウィンドウの作成
         self.scr.fill((169, 206, 236)) #画面を水色で作成
 
 
-class hole(pg.sprite.Sprite):
+class Hole(pg.sprite.Sprite):
     def __init__(self, r, xy):
         super().__init__()
         self.r = r  #穴の半径
@@ -116,7 +116,7 @@ def game_h(scr, font):
 
     holes = pg.sprite.Group()       #穴のスプライトグループを作成
     for i in hxy_list:
-        holes.add(hole(100.0, i))
+        holes.add(Hole(100.0, i))
     
     k_bind = pg.sprite.Group()      #穴に対応するキーの文字のスプライトグループ
     for i in range(len(K_list)):    
